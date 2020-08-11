@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM tensorflow/tensorflow:2.3.0
 
 RUN apt update && apt -y upgrade
 RUN apt install -y python3 python3-pip
@@ -17,6 +17,9 @@ RUN pip3 install -r requirements.txt
 
 # jupyterlabの"Table of Contents"
 RUN jupyter labextension install @jupyterlab/toc
+# jupyterlabの"tqdm"
+#RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
+#RUN jupyter nbextension enable --py --sys-prefix widgetsnbextension
 # jupyterlabの"Variable Inspector""
 RUN jupyter labextension install @lckr/jupyterlab_variableinspector
 
