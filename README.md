@@ -1,6 +1,6 @@
 # hangout-manager
 2020年サポーターズ主催サマーハッカソン用リポジトリ  
-メインリポジトリは[こちら](https://github.com/oba18/hangout-manager)
+メインリポジトリは[こちら](https://github.com/oba18/hangout-manager)  
 データの前処理リポジトリは[こちら](https://github.com/yamamoto-yuta/hangout-manager)
 
 ## 概要
