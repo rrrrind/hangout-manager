@@ -3,6 +3,8 @@ import os
 import numpy as np
 import pandas as pd
 
+
+
 class DataGenerator(object):
     """
     回答結果から各種学習データセットを作成するクラス
