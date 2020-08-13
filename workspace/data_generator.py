@@ -27,7 +27,7 @@ class DataGenerator(object):
                            'エンタメ（ボウリング場・カラオケ・ゲームセンターなど）', 
                            'スポーツ（ボルダリング・ゴルフ・サイクリング・ジム・ヨガなど）',
                            '観光（観光名所巡り・日帰り温泉・食べ歩きなど）',
-                           '遊園地・動物園・水族館・海水浴場',
+#                            '遊園地・動物園・水族館・海水浴場',
                            '友達との飲み会（外飲み・飲み歩きなど）',
                            '外での買い物（アウトレットなど）',
                            'ショー・展示・催し（映画館・ミュージカル・博物館・美術館など）',
@@ -35,16 +35,30 @@ class DataGenerator(object):
         
         # 回答結果
         self.df_answer = pd.read_csv(answer_path)
-        # 明後日の予定の質問の選択肢の連番が4と5で逆になってしまっているので修正
-        def map_change_num(x):
-            if x == '5 : だいたい予定が詰まっている (25%)':
-                x = '4 : だいたい予定が詰まっている (25%)'
-            elif x == '4 : 朝から外せない予定がある (0%)':
-                x = '5 : 朝から外せない予定がある (0%)'
-            return x
-        self.df_answer.iloc[:, 17] = self.df_answer.iloc[:, 17].map(map_change_num)
-        # 複数回答の区切り文字が";"と", "で２種類あるので", "に統一
-        self.df_answer.iloc[:, 6] = self.df_answer.iloc[:, 6].map(lambda x: x.replace(';', ', ') if type(x) is str else x)
+        # 回答結果を前処理
+        def preprocessing():
+            # 明後日の予定の質問の選択肢の連番が4と5で逆になってしまっているので修正
+            def map_change_num(x):
+                if x == '5 : だいたい予定が詰まっている (25%)':
+                    x = '4 : だいたい予定が詰まっている (25%)'
+                elif x == '4 : 朝から外せない予定がある (0%)':
+                    x = '5 : 朝から外せない予定がある (0%)'
+                return x
+            self.df_answer.iloc[:, 17] = self.df_answer.iloc[:, 17].map(map_change_num)
+            # 複数回答の区切り文字が";"と", "で２種類あるので", "に統一
+            self.df_answer.iloc[:, 6] = self.df_answer.iloc[:, 6].map(lambda x: x.replace(';', ', ') if type(x) is str else x)
+            # 遊園地と回答した結果を削除
+            self.df_answer = self.df_answer.drop(self.df_answer.index[
+                (self.df_answer.iloc[:, 3] == '遊園地・動物園・水族館・海水浴場') | 
+                (self.df_answer.iloc[:, 4] == '遊園地・動物園・水族館・海水浴場') |
+                (self.df_answer.iloc[:, 5] == '遊園地・動物園・水族館・海水浴場') |
+                (self.df_answer.iloc[:, 18] == '遊園地・動物園・水族館・海水浴場')
+            ]).reset_index(drop=True)
+            # 複数回答の中に遊園地が含まれていたら行ごと削除（nanを"なし"に変換）
+            self.df_answer.iloc[:, 6] = self.df_answer.iloc[:, 6].fillna('なし').map(lambda x: x.split(', '))
+            # 複数回答の中に遊園地が含まれていたら行ごと削除
+            self.df_answer = self.df_answer.drop(index=[i for i, s in enumerate(self.df_answer.iloc[:, 6]) if '遊園地・動物園・水族館・海水浴場' in s])
+        preprocessing()
         
         # 各種データセット
         self.df_static_info_binary = None
@@ -86,17 +100,13 @@ class DataGenerator(object):
         for i in [3, 4, 5, 18]:
             df_answer.iloc[:, i] = df_answer.iloc[:, i].fillna('なし').map(lambda x: self.GENRE_LIST.index(x))
             
-        # 複数回答の列を抽出
-        s_mlans = df_answer.iloc[:, 6]
-        # nanを"なし"に変換
-        s_mlans = s_mlans.fillna('なし').map(lambda x: x.split(', '))
         # 遊びのジャンル（複数回答）を数値に変換
         def map_stoi(lst_ans):
             lst_ans_int = []
             for ans in lst_ans:
                 lst_ans_int.append(self.GENRE_LIST.index(ans))
             return lst_ans_int
-        df_answer.iloc[:, 6] = s_mlans.map(map_stoi)
+        df_answer.iloc[:, 6] = df_answer.iloc[:, 6].map(map_stoi)
         
         # この時点で未回答の質問があるのはアウトなので除外
         df_answer = df_answer.dropna()
@@ -137,7 +147,19 @@ class DataGenerator(object):
         df_ans_bin.iloc[:, 19:25] : DataFrame
             動的情報を扱うNNの学習データセット
         """
-        return df_ans_bin.iloc[:, 15:19]
+        
+        # 回答結果から必要な列を抽出
+        df_dataset = df_ans_bin.iloc[:, 15:19]
+        
+        # 正解ラベルをベクトルに変換
+        def map_label2vec(x):
+            vector = np.zeros(len(self.GENRE_LIST) - 1).astype(np.int64)
+            vector[x] = 1
+            return vector
+        df_dataset.iloc[:, -1] = df_dataset.iloc[:, -1].map(map_label2vec)
+        
+        # 生成したデータセットを返す
+        return df_dataset
     
     def _generate_static_info(self, df_ans_bin):
         
@@ -157,7 +179,7 @@ class DataGenerator(object):
             def map_label2vec(row):
                 vector = np.zeros(len(self.GENRE_LIST) - 1).astype(np.int64)
                 for x in row:
-                    if x != 8:
+                    if x != len(self.GENRE_LIST) - 1:
                         vector[x] = 1
                 return vector
             df_in['label'] = df_lb_bin.apply(map_label2vec, axis=1)
@@ -177,7 +199,7 @@ class DataGenerator(object):
                         row[3] = row[3].remove(row[i])
 
                 # リストが空or"なし"のみの場合Noneを返す
-                if not row[3] or (len(row[3]) == 1 and row[3][0] == 8):
+                if not row[3] or (len(row[3]) == 1 and row[3][0] == len(self.GENRE_LIST) - 1):
                     return None
                 
                 return row[3]
@@ -185,8 +207,8 @@ class DataGenerator(object):
             df_lb.iloc[:, 3] = df_lb.apply(apply_rm_duplicate, axis=1)
             
             # なしをNoneに変換
-            df_lb.iloc[:, 1] = df_lb.iloc[:, 1].map(lambda x: None if x == 8 else x)
-            df_lb.iloc[:, 2] = df_lb.iloc[:, 2].map(lambda x: None if x == 8 else x)
+            df_lb.iloc[:, 1] = df_lb.iloc[:, 1].map(lambda x: None if x == len(self.GENRE_LIST) - 1 else x)
+            df_lb.iloc[:, 2] = df_lb.iloc[:, 2].map(lambda x: None if x == len(self.GENRE_LIST) - 1 else x)
             
             # 正解ラベルを重み付きベクトルに変換
             def map_label2vec(row):
