@@ -5,6 +5,88 @@ import pandas as pd
 
 
 
+class GENRE(object):
+    """
+    遊びのジャンルを定義したクラス
+    """
+    
+    @classmethod
+    def OUTDOOR(cls):
+        return 'アウトドア（マリンスポーツ・釣り・BBQ・登山・ハイキングなど）'
+    
+    @classmethod
+    def ENTERTAINMENT(cls):
+        return 'エンタメ（ボウリング場・カラオケ・ゲームセンターなど）'
+    
+    @classmethod
+    def SPORTS(cls):
+        return 'スポーツ（ボルダリング・ゴルフ・サイクリング・ジム・ヨガなど）'
+    
+    @classmethod
+    def SIGHTSEEING(cls):
+        return '観光（観光名所巡り・日帰り温泉・食べ歩きなど）'
+    
+    @classmethod
+    def AMUSEMENT(cls):
+        return '遊園地・動物園・水族館・海水浴場'
+    
+    @classmethod
+    def DRINKING(cls):
+        return '友達との飲み会（外飲み・飲み歩きなど）'
+    
+    @classmethod
+    def SHOPPING(cls):
+        return '外での買い物（アウトレットなど）'
+    
+    @classmethod
+    def SHOW(cls):
+        return 'ショー・展示・催し（映画館・ミュージカル・博物館・美術館など）'
+    
+    @classmethod
+    def NOTHING(cls):
+        return 'なし'
+
+
+    
+class Preprocess(object):
+    """
+    前処理を定義するクラス
+    """
+    
+    @classmethod
+    def common(cls, df_ans):
+        # 明後日の予定の質問の選択肢の連番が4と5で逆になってしまっているので修正
+        def map_change_num(x):
+            if x == '5 : だいたい予定が詰まっている (25%)':
+                x = '4 : だいたい予定が詰まっている (25%)'
+            elif x == '4 : 朝から外せない予定がある (0%)':
+                x = '5 : 朝から外せない予定がある (0%)'
+            return x
+        df_ans.iloc[:, 17] = df_ans.iloc[:, 17].map(map_change_num)
+        # 複数回答の区切り文字が";"と", "で２種類あるので", "に統一
+        df_ans.iloc[:, 6] = df_ans.iloc[:, 6].map(lambda x: x.replace(';', ', ') if type(x) is str else x)
+        # 複数回答の中に遊園地が含まれていたら行ごと削除（nanを"なし"に変換）
+        df_ans.iloc[:, 6] = df_ans.iloc[:, 6].fillna(GENRE.NOTHING()).map(lambda x: x.split(', '))
+        
+        return df_ans
+    
+    @classmethod
+    def remove_genre_from_answerset(cls, df_ans, genre_list, genre):
+        genre_list.remove(genre)
+        # 遊園地と回答した結果を削除
+        df_ans = df_ans.drop(df_ans.index[
+            (df_ans.iloc[:, 3] == genre) | 
+            (df_ans.iloc[:, 4] == genre) |
+            (df_ans.iloc[:, 5] == genre) |
+            (df_ans.iloc[:, 18] == genre)
+        ]).reset_index(drop=True)
+        # 複数回答の中に遊園地が含まれていたら行ごと削除
+        df_ans = df_ans.drop(index=[i for i, s in enumerate(df_ans.iloc[:, 6]) if genre in s])
+        
+        return df_ans
+
+        
+        
 class DataGenerator(object):
     """
     回答結果から各種学習データセットを作成するクラス
@@ -14,7 +96,12 @@ class DataGenerator(object):
     # データセットの生成
     >>> from data_generator import DataGenerator
     >>> dg = DataGenrator('<回答結果のCSVファイルへのパス')
+    # --- ↓ 遊園地を回答から削除する場合 ↓ ---
+    >>> from data_generator import GENRE, Preprocess
+    >>> dg.df_answer = Preprocess.remove_genre_from_answerset(dg.df_answer, dg.GENRE_LIST, GENRE.AMUSEMENT())
+    # --- ↑ 遊園地を回答から削除する場合 ↑ ---
     >>> dg.generate()
+    
     # データセットへのアクセス
     >>> dg.df_static_info_binary   # 静的情報（バイナリベクトル）
     >>> dg.df_static_info_weight   # 静的情報（重み付きベクトル）
@@ -25,49 +112,27 @@ class DataGenerator(object):
     def __init__(self, answer_path):
         
         # 遊びのジャンル一覧（未回答は"なし"に変換）
-        self.GENRE_LIST = ['アウトドア（マリンスポーツ・釣り・BBQ・登山・ハイキングなど）', 
-                           'エンタメ（ボウリング場・カラオケ・ゲームセンターなど）', 
-                           'スポーツ（ボルダリング・ゴルフ・サイクリング・ジム・ヨガなど）',
-                           '観光（観光名所巡り・日帰り温泉・食べ歩きなど）',
-#                            '遊園地・動物園・水族館・海水浴場',
-                           '友達との飲み会（外飲み・飲み歩きなど）',
-                           '外での買い物（アウトレットなど）',
-                           'ショー・展示・催し（映画館・ミュージカル・博物館・美術館など）',
-                           'なし']
+        self.GENRE_LIST = [GENRE.OUTDOOR(), 
+                           GENRE.ENTERTAINMENT(), 
+                           GENRE.SPORTS(),
+                           GENRE.SIGHTSEEING(),
+                           GENRE.AMUSEMENT(),
+                           GENRE.DRINKING(),
+                           GENRE.SHOPPING(),
+                           GENRE.SHOW(),
+                           GENRE.NOTHING()]
         
         # 回答結果
         self.df_answer = pd.read_csv(answer_path)
         # 回答結果を前処理
-        def preprocessing():
-            # 明後日の予定の質問の選択肢の連番が4と5で逆になってしまっているので修正
-            def map_change_num(x):
-                if x == '5 : だいたい予定が詰まっている (25%)':
-                    x = '4 : だいたい予定が詰まっている (25%)'
-                elif x == '4 : 朝から外せない予定がある (0%)':
-                    x = '5 : 朝から外せない予定がある (0%)'
-                return x
-            self.df_answer.iloc[:, 17] = self.df_answer.iloc[:, 17].map(map_change_num)
-            # 複数回答の区切り文字が";"と", "で２種類あるので", "に統一
-            self.df_answer.iloc[:, 6] = self.df_answer.iloc[:, 6].map(lambda x: x.replace(';', ', ') if type(x) is str else x)
-            # 遊園地と回答した結果を削除
-            self.df_answer = self.df_answer.drop(self.df_answer.index[
-                (self.df_answer.iloc[:, 3] == '遊園地・動物園・水族館・海水浴場') | 
-                (self.df_answer.iloc[:, 4] == '遊園地・動物園・水族館・海水浴場') |
-                (self.df_answer.iloc[:, 5] == '遊園地・動物園・水族館・海水浴場') |
-                (self.df_answer.iloc[:, 18] == '遊園地・動物園・水族館・海水浴場')
-            ]).reset_index(drop=True)
-            # 複数回答の中に遊園地が含まれていたら行ごと削除（nanを"なし"に変換）
-            self.df_answer.iloc[:, 6] = self.df_answer.iloc[:, 6].fillna('なし').map(lambda x: x.split(', '))
-            # 複数回答の中に遊園地が含まれていたら行ごと削除
-            self.df_answer = self.df_answer.drop(index=[i for i, s in enumerate(self.df_answer.iloc[:, 6]) if '遊園地・動物園・水族館・海水浴場' in s])
-        preprocessing()
+        self.df_answer = Preprocess.common(self.df_answer)
         
         # 各種データセット
         self.df_static_info_binary = None
         self.df_static_info_weight = None
         self.df_dynamic_info = None
         self.df_human_info = None
-        
+    
     def generate(self):
         # 回答結果を数値情報に変換
         df_answer_binary = self._convert_stoi(self.df_answer.copy())
@@ -100,7 +165,7 @@ class DataGenerator(object):
         
         # 遊びのジャンル（単回答）を数値に変換
         for i in [3, 4, 5, 18]:
-            df_answer.iloc[:, i] = df_answer.iloc[:, i].fillna('なし').map(lambda x: self.GENRE_LIST.index(x))
+            df_answer.iloc[:, i] = df_answer.iloc[:, i].fillna(GENRE.NOTHING()).map(lambda x: self.GENRE_LIST.index(x))
             
         # 遊びのジャンル（複数回答）を数値に変換
         def map_stoi(lst_ans):
