@@ -248,7 +248,7 @@ class DataGenerator(object):
                 for x in row:
                     if x != len(self.GENRE_LIST) - 1:
                         vector[x] = 1
-                return vector
+                return vector / sum(vector)
             df_in['label'] = df_lb_bin.apply(map_label2vec, axis=1)
             return df_in
         
@@ -289,7 +289,7 @@ class DataGenerator(object):
                 if row[3] is not None:
                     for x in row[3]:
                         vector[int(x)] = weight[-1]
-                return vector
+                return vector / sum(vector)
             
             df_in['label'] = df_lb.apply(map_label2vec, axis=1)
             return df_in
