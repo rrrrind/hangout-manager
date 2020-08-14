@@ -255,44 +255,66 @@ class DataGenerator(object):
         # 重み付きパターンの学習データセットを作成
         def _generate_weight_label(df_in, df_lb):
             
-            # 複数回答した中に第1~3希望ですでに回答したものが含まれていたら除去する
-            def apply_rm_duplicate(row):
-                for i in range(3):
-                    # 途中でリストが空になったらNoneを返す
-                    if not row[3]:
-                        return None
-                    # 第1~3希望で選んだジャンルがリストに含まれていたら削除
-                    if row[i] in row[3]:
-                        row[3] = row[3].remove(row[i])
-
-                # リストが空or"なし"のみの場合Noneを返す
-                if not row[3] or (len(row[3]) == 1 and row[3][0] == len(self.GENRE_LIST) - 1):
-                    return None
+            # 第4希望を考慮しない
+            def no_consider_4th(df_in, df_lb):
                 
-                return row[3]
+                # 正解ラベルから第1~3希望の部分を抽出
+                df_lb_to3rd = df_lb.iloc[:, :3]
+                
+                # 正解ラベルを重み付きベクトルに変換
+                def map_label2vec(row):
+                    weight = [1.0, 0.6, 0.3]
+                    vector = np.zeros(len(self.GENRE_LIST) - 1).astype(np.float64)
+                    for i, x in enumerate(row):
+                        if x != len(self.GENRE_LIST) - 1:
+                            vector[x] = weight[i]
+                    return vector / sum(vector)
+                df_in['label'] = df_lb_to3rd.apply(map_label2vec, axis=1)
+                return df_in
             
-            df_lb.iloc[:, 3] = df_lb.apply(apply_rm_duplicate, axis=1)
+            # 第4希望を考慮する
+            def consider_4th(df_in, df_lb):
             
-            # なしをNoneに変換
-            df_lb.iloc[:, 1] = df_lb.iloc[:, 1].map(lambda x: None if x == len(self.GENRE_LIST) - 1 else x)
-            df_lb.iloc[:, 2] = df_lb.iloc[:, 2].map(lambda x: None if x == len(self.GENRE_LIST) - 1 else x)
+                # 複数回答した中に第1~3希望ですでに回答したものが含まれていたら除去する
+                def apply_rm_duplicate(row):
+                    for i in range(3):
+                        # 途中でリストが空になったらNoneを返す
+                        if not row[3]:
+                            return None
+                        # 第1~3希望で選んだジャンルがリストに含まれていたら削除
+                        if row[i] in row[3]:
+                            row[3] = row[3].remove(row[i])
+
+                    # リストが空or"なし"のみの場合Noneを返す
+                    if not row[3] or (len(row[3]) == 1 and row[3][0] == len(self.GENRE_LIST) - 1):
+                        return None
+
+                    return row[3]
+
+                df_lb.iloc[:, 3] = df_lb.apply(apply_rm_duplicate, axis=1)
+
+                # なしをNoneに変換
+                df_lb.iloc[:, 1] = df_lb.iloc[:, 1].map(lambda x: None if x == len(self.GENRE_LIST) - 1 else x)
+                df_lb.iloc[:, 2] = df_lb.iloc[:, 2].map(lambda x: None if x == len(self.GENRE_LIST) - 1 else x)
+
+                # 正解ラベルを重み付きベクトルに変換
+                def map_label2vec(row):
+                    weight = [1.0, 0.7, 0.4, 0.1]
+                    vector = np.zeros(len(self.GENRE_LIST) - 1).astype(np.float64)
+                    # 第1~3希望まで重みを計算
+                    for i, x in enumerate(row[:3]):
+                        if not np.isnan(x):
+                            vector[int(x)] = weight[i]
+                    # 第4希望の重みを計算
+                    if row[3] is not None:
+                        for x in row[3]:
+                            vector[int(x)] = weight[-1]
+                    return vector / sum(vector)
+
+                df_in['label'] = df_lb.apply(map_label2vec, axis=1)
+                return df_in
             
-            # 正解ラベルを重み付きベクトルに変換
-            def map_label2vec(row):
-                weight = [1.0, 0.7, 0.4, 0.1]
-                vector = np.zeros(len(self.GENRE_LIST) - 1).astype(np.float64)
-                # 第1~3希望まで重みを計算
-                for i, x in enumerate(row[:3]):
-                    if not np.isnan(x):
-                        vector[int(x)] = weight[i]
-                # 第4希望の重みを計算
-                if row[3] is not None:
-                    for x in row[3]:
-                        vector[int(x)] = weight[-1]
-                return vector / sum(vector)
-            
-            df_in['label'] = df_lb.apply(map_label2vec, axis=1)
-            return df_in
+            return no_consider_4th(df_in, df_lb)
         
         # バイナリベクトルと重み付きベクトルを返す
         return _generate_binary_label(df_input.copy(), df_label.copy()), _generate_weight_label(df_input.copy(), df_label.copy())
