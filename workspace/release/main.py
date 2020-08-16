@@ -1,6 +1,7 @@
 import numpy as np
 from static_model import RidgeRegModel as rrm
 from dynamic_model import RidgeClfModel as rcm
+from friends_model import FriendsRecModel as frm
 
 class RecommendHangout(object):
     def __init__(self, static_q_list, dynamic_q_list):
@@ -51,3 +52,13 @@ class RecommendHangout(object):
         s_output = self.static_model.forward(self.static_q_list)
         result = self.dynamic_model.forward(s_output, self.dynamic_q_list[:,:2])
         return self.recommend_genre(result), self.recommend_hangouts(result)
+    
+
+class RecommendFriends(object):
+    def __init__(self, entire_q_list, sub_q_list):
+        self.entire_q_list = entire_q_list
+        self.sub_q_list = sub_q_list
+        self.friends_model = frm()
+        
+    def forward(self):
+        return self.friends_model.forward(self.entire_q_list, self.sub_q_list)
