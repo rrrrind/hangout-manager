@@ -1,0 +1,21 @@
+<div class=pad70>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Q one:</strong>
+  <%= @question.q_one %>
+</p>
+
+<p>
+  <strong>Q two:</strong>
+  <%= @question.q_two %>
+</p>
+
+<p>
+  <strong>Q three:</strong>
+  <%= @question.q_three %>
+</p>
+
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back', questions_path %>
+</div>

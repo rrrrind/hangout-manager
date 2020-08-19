@@ -1,0 +1,16 @@
+</div>
+<div class="jumbotron" style="background: url(<%= asset_path "welcome.png" %>); background-size: cover; height:800px; opacity:80%" >
+  <div class="container">
+    <h1 style="text-align:center;font-size:140px; padding-top:-70px">AI × あそび</h1>
+    <div style="text-align:center">
+    <% for i in 1..9 do %>
+      <br>
+    <% end %>
+      <button type="button" class="btn btn-secondary w-25" onclick="location.href='http://localhost:3000/signup'">新規登録</button>
+    <% for i in 1..2 do %>
+      &nbsp;
+    <% end %>
+      <button type="button" class="btn btn-secondary w-25" onclick="location.href='http://localhost:3000/login'">ログイン</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>User Details</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>D one</th>
+      <th>D two</th>
+      <th>D three</th>
+      <th>D four</th>
+      <th>D five</th>
+      <th>D six</th>
+      <th>D seven</th>
+      <th>D eight</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_details.each do |user_detail| %>
+      <tr>
+        <td><%= user_detail.d_one %></td>
+        <td><%= user_detail.d_two %></td>
+        <td><%= user_detail.d_three %></td>
+        <td><%= user_detail.d_four %></td>
+        <td><%= user_detail.d_five %></td>
+        <td><%= user_detail.d_six %></td>
+        <td><%= user_detail.d_seven %></td>
+        <td><%= user_detail.d_eight %></td>
+        <td><%= user_detail.user %></td>
+        <td><%= link_to 'Show', user_detail %></td>
+        <td><%= link_to 'Edit', edit_user_detail_path(user_detail) %></td>
+        <td><%= link_to 'Destroy', user_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User Detail', new_user_detail_path %>
