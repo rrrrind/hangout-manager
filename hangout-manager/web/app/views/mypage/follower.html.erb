@@ -1,0 +1,23 @@
+<div class=pad70>
+<h2>フォロワー</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>年齢</th>
+      <th>性別</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% current_user.followers.each do |follower| %>
+      <tr onclick='window.location="<%= '/users/' + follower.id.to_s + '/show' %>"' role="link">
+        <td><%= follower.name %></td>
+        <td><%= follower.age %></td>
+        <td><%= follower.sex %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "戻る", "http://localhost:3000/user/#{current_user.id}", { class: 'btn btn-outline-primary w-25' }  %>
+</div>

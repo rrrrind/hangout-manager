@@ -1,0 +1,63 @@
+  <div class="center">
+    <%= form_with(model: hang_out, local: true) do |form| %>
+      <% if hang_out.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(hang_out.errors.count, "error") %> prohibited this hang_out from being saved:</h2>
+
+          <ul>
+            <% hang_out.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <% if @hang_out_name.nil? %>
+      <div class="field">
+        <%= form.label :name, "名前" %>
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <%= form.text_field :name, { class: 'form-control', required: true } %>
+          </div>
+        </div>
+      </div>
+      <% else %>
+        <%= form.label :name, "名前" %>
+        <h3><%= @hang_out_name %>がレコメンドされています</h3>
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <%= form.text_field :name, value: @hang_out_name, class: 'form-control', required: true  %>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= form.label :date, "いつ？" %>
+            <%= form.date_select :date, {class: "form-control"} %>
+      </div>
+
+      <div class="field">
+        <%= form.label :start_time, "何時から？" %>
+        <%= form.time_select :start_time, { class: 'form-control', required: true } %>
+      </div>
+
+      <div class="field">
+        <%= form.label :end_time, "何時まで？" %>
+        <%= form.time_select :end_time, { class: 'form-control', required: true }  %>
+      </div>
+
+      <div class="field">
+        <%= form.label :upper_member, "あと何人誘う？" %>
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+        <%= form.number_field :upper_member, { class: 'form-control', required: true }  %>
+          </div>
+          </div>
+      </div>
+
+      <div class="actions">
+        <%= form.submit "登録", { class: 'btn btn-primary w-25' } %>
+      </div>
+    <% end %>
+    <%= link_to "戻る", :back, { class: 'btn btn-primary w-25' }  %>
+  </div>

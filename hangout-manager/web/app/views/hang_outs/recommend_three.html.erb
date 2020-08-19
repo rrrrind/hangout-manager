@@ -1,0 +1,11 @@
+<div class=pad120>
+  <div class=center>
+  <h3>では</h3>
+  <br>
+  <div class=rh1><%= @hang_out_name_3 %>はいかがですか？</div>
+  <br>
+  <br>
+  <%= link_to "#{@hang_out_name_3}であそぶ", new_hang_out_path(hang_out_name: @hang_out_name_3), { class: 'btn btn-outline-primary btn-lg' } %>
+  <%= link_to "いいえ", "http://localhost:3000/recommend_four/#{@question.id}", { class: 'btn btn-outline-primary btn-lg' } %>
+  </div>
+</div>

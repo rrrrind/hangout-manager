@@ -1,0 +1,674 @@
+Started GET "/" for 192.168.48.1 at 2020-08-14 13:04:18 +0000
+Cannot render console from 192.168.48.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.9ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (7.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by WelcomeController#welcome as HTML
+  Rendering welcome/welcome.html.erb within layouts/application
+DEPRECATION WARNING: autoprefixer-rails was deprected. Migration guide:
+https://github.com/ai/autoprefixer-rails/wiki/Deprecated (called from run at /usr/local/bundle/gems/autoprefixer-rails-9.8.6.1/lib/autoprefixer-rails/sprockets.rb:22)
+DEPRECATION WARNING: autoprefixer-rails was deprected. Migration guide:
+https://github.com/ai/autoprefixer-rails/wiki/Deprecated (called from run at /usr/local/bundle/gems/autoprefixer-rails-9.8.6.1/lib/autoprefixer-rails/sprockets.rb:22)
+DEPRECATION WARNING: autoprefixer-rails was deprected. Migration guide:
+https://github.com/ai/autoprefixer-rails/wiki/Deprecated (called from run at /usr/local/bundle/gems/autoprefixer-rails-9.8.6.1/lib/autoprefixer-rails/sprockets.rb:22)
+DEPRECATION WARNING: autoprefixer-rails was deprected. Migration guide:
+https://github.com/ai/autoprefixer-rails/wiki/Deprecated (called from run at /usr/local/bundle/gems/autoprefixer-rails-9.8.6.1/lib/autoprefixer-rails/sprockets.rb:22)
+DEPRECATION WARNING: autoprefixer-rails was deprected. Migration guide:
+https://github.com/ai/autoprefixer-rails/wiki/Deprecated (called from run at /usr/local/bundle/gems/autoprefixer-rails-9.8.6.1/lib/autoprefixer-rails/sprockets.rb:22)
+DEPRECATION WARNING: autoprefixer-rails was deprected. Migration guide:
+https://github.com/ai/autoprefixer-rails/wiki/Deprecated (called from run at /usr/local/bundle/gems/autoprefixer-rails-9.8.6.1/lib/autoprefixer-rails/sprockets.rb:22)
+DEPRECATION WARNING: autoprefixer-rails was deprected. Migration guide:
+https://github.com/ai/autoprefixer-rails/wiki/Deprecated (called from run at /usr/local/bundle/gems/autoprefixer-rails-9.8.6.1/lib/autoprefixer-rails/sprockets.rb:22)
+DEPRECATION WARNING: autoprefixer-rails was deprected. Migration guide:
+https://github.com/ai/autoprefixer-rails/wiki/Deprecated (called from run at /usr/local/bundle/gems/autoprefixer-rails-9.8.6.1/lib/autoprefixer-rails/sprockets.rb:22)
+DEPRECATION WARNING: autoprefixer-rails was deprected. Migration guide:
+https://github.com/ai/autoprefixer-rails/wiki/Deprecated (called from run at /usr/local/bundle/gems/autoprefixer-rails-9.8.6.1/lib/autoprefixer-rails/sprockets.rb:22)
+DEPRECATION WARNING: autoprefixer-rails was deprected. Migration guide:
+https://github.com/ai/autoprefixer-rails/wiki/Deprecated (called from run at /usr/local/bundle/gems/autoprefixer-rails-9.8.6.1/lib/autoprefixer-rails/sprockets.rb:22)
+DEPRECATION WARNING: autoprefixer-rails was deprected. Migration guide:
+https://github.com/ai/autoprefixer-rails/wiki/Deprecated (called from run at /usr/local/bundle/gems/autoprefixer-rails-9.8.6.1/lib/autoprefixer-rails/sprockets.rb:22)
+  Rendered welcome/welcome.html.erb within layouts/application (Duration: 13769.1ms | Allocations: 76901)
+Completed 200 OK in 14269ms (Views: 14209.0ms | ActiveRecord: 0.0ms | Allocations: 119980)
+
+
+Started GET "/signup" for 192.168.48.1 at 2020-08-14 13:04:41 +0000
+Cannot render console from 192.168.48.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Users::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 3.8ms | Allocations: 200)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 58.4ms | Allocations: 3083)
+Completed 200 OK in 152ms (Views: 120.1ms | ActiveRecord: 7.5ms | Allocations: 17991)
+
+
+Started POST "/users" for 192.168.48.1 at 2020-08-14 13:05:13 +0000
+Cannot render console from 192.168.48.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"3oyAaRAocnb/+djxqHX2hBaomzsFmYUTgeXRleyGZvqnUEAR02dvoiq9LF4+/xCLVbKl0LM2x+82HnJWGcyv7Q==", "user"=>{"name"=>"rrrrind", "email"=>"rrrrind@rind.com", "age"=>"22", "sex"=>"男", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"登録"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (11.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'rrrrind@rind.com' LIMIT 1[0m
+  [1m[36mUser Create (2.5ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `created_at`, `updated_at`, `name`, `age`, `sex`) VALUES ('rrrrind@rind.com', '$2a$12$qIy5efRHIHrtTtC36gG0bO4GUbaGr114xozngDULfnbTgGA5Yh6um', '2020-08-14 13:05:14.089643', '2020-08-14 13:05:14.089643', 'rrrrind', 22, 0)[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/user/6
+Completed 302 Found in 451ms (ActiveRecord: 17.1ms | Allocations: 15958)
+
+
+Started GET "/user/6" for 192.168.48.1 at 2020-08-14 13:05:14 +0000
+Cannot render console from 192.168.48.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by MypageController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  ↳ app/controllers/mypage_controller.rb:15:in `set_user'
+  Rendering mypage/show.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/views/mypage/show.html.erb:2
+  [1m[35m (8.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `users` INNER JOIN `relationships` ON `users`.`id` = `relationships`.`follow_id` WHERE `relationships`.`user_id` = 6[0m
+  ↳ app/views/mypage/show.html.erb:11
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `users` INNER JOIN `relationships` ON `users`.`id` = `relationships`.`user_id` WHERE `relationships`.`follow_id` = 6[0m
+  ↳ app/views/mypage/show.html.erb:12
+  [1m[36mHangOut Load (8.9ms)[0m  [1m[34mSELECT `hang_outs`.* FROM `hang_outs` WHERE `hang_outs`.`user_id` = 6[0m
+  ↳ app/views/mypage/show.html.erb:29
+  [1m[36mLike Load (10.4ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`user_id` = 6[0m
+  ↳ app/views/mypage/show.html.erb:55
+  Rendered mypage/show.html.erb within layouts/application (Duration: 242.6ms | Allocations: 18755)
+Completed 200 OK in 318ms (Views: 269.9ms | ActiveRecord: 36.3ms | Allocations: 26043)
+
+
+Started GET "/questions/new" for 192.168.48.1 at 2020-08-14 13:05:27 +0000
+Cannot render console from 192.168.48.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by QuestionsController#new as HTML
+  Rendering questions/new.html.erb within layouts/application
+  Rendered questions/_form.html.erb (Duration: 25.5ms | Allocations: 2955)
+  Rendered questions/new.html.erb within layouts/application (Duration: 33.8ms | Allocations: 3254)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/views/layouts/application.html.erb:14
+Completed 200 OK in 131ms (Views: 90.6ms | ActiveRecord: 4.7ms | Allocations: 14098)
+
+
+Started POST "/questions" for 192.168.48.1 at 2020-08-14 13:05:33 +0000
+Cannot render console from 192.168.48.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by QuestionsController#create as HTML
+  Parameters: {"authenticity_token"=>"+lt7imGdXp/tkQiv/DMaVgOtzKnySMy6WvzPtTLVxhIxNd+x/bY0pMtiGKt7Q17tYpugiHPzTqknq3Qp8c0h6A==", "question"=>{"q_one"=>"3", "q_two"=>"6", "q_three"=>"1"}, "commit"=>"登録"}
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/questions_controller.rb:35:in `block in create'
+  [1m[36mQuestion Create (11.9ms)[0m  [1m[32mINSERT INTO `questions` (`q_one`, `q_two`, `q_three`, `created_at`, `updated_at`) VALUES (3, 6, 1, '2020-08-14 13:05:33.240846', '2020-08-14 13:05:33.240846')[0m
+  ↳ app/controllers/questions_controller.rb:35:in `block in create'
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/questions_controller.rb:35:in `block in create'
+Redirected to http://localhost:3000/questions/3
+Completed 302 Found in 36ms (ActiveRecord: 15.8ms | Allocations: 2919)
+
+
+Started GET "/questions/3" for 192.168.48.1 at 2020-08-14 13:05:33 +0000
+Cannot render console from 192.168.48.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by QuestionsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` WHERE `questions`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/questions_controller.rb:72:in `set_question'
+  Rendering questions/show.html.erb within layouts/application
+  Rendered questions/show.html.erb within layouts/application (Duration: 3.1ms | Allocations: 282)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/views/layouts/application.html.erb:14
+Completed 200 OK in 63ms (Views: 53.0ms | ActiveRecord: 1.1ms | Allocations: 7746)
+
+
+Started GET "/questions/3/json" for 192.168.48.3 at 2020-08-14 13:07:03 +0000
+Cannot render console from 192.168.48.3! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by QuestionsController#get_json as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mQuestion Load (1.0ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` WHERE `questions`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/questions_controller.rb:16:in `get_json'
+Completed 200 OK in 8ms (Views: 1.0ms | ActiveRecord: 1.0ms | Allocations: 864)
+
+
+Started GET "/user/6" for 192.168.48.1 at 2020-08-14 13:08:17 +0000
+Cannot render console from 192.168.48.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by MypageController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  ↳ app/controllers/mypage_controller.rb:15:in `set_user'
+  Rendering mypage/show.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/views/mypage/show.html.erb:2
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `users` INNER JOIN `relationships` ON `users`.`id` = `relationships`.`follow_id` WHERE `relationships`.`user_id` = 6[0m
+  ↳ app/views/mypage/show.html.erb:11
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM `users` INNER JOIN `relationships` ON `users`.`id` = `relationships`.`user_id` WHERE `relationships`.`follow_id` = 6[0m
+  ↳ app/views/mypage/show.html.erb:12
+  [1m[36mHangOut Load (0.7ms)[0m  [1m[34mSELECT `hang_outs`.* FROM `hang_outs` WHERE `hang_outs`.`user_id` = 6[0m
+  ↳ app/views/mypage/show.html.erb:29
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`user_id` = 6[0m
+  ↳ app/views/mypage/show.html.erb:55
+  Rendered mypage/show.html.erb within layouts/application (Duration: 53.4ms | Allocations: 4590)
+Completed 200 OK in 205ms (Views: 166.1ms | ActiveRecord: 6.9ms | Allocations: 10877)
+
+
+Started GET "/users/edit" for 192.168.48.1 at 2020-08-14 13:08:24 +0000
+Cannot render console from 192.168.48.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Users::RegistrationsController#edit as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 15)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 13.9ms | Allocations: 1295)
+Completed 200 OK in 127ms (Views: 116.0ms | ActiveRecord: 1.3ms | Allocations: 9266)
+
+
+Started GET "/user/6" for 192.168.48.1 at 2020-08-14 13:08:27 +0000
+Cannot render console from 192.168.48.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by MypageController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  ↳ app/controllers/mypage_controller.rb:15:in `set_user'
+  Rendering mypage/show.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/views/mypage/show.html.erb:2
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `users` INNER JOIN `relationships` ON `users`.`id` = `relationships`.`follow_id` WHERE `relationships`.`user_id` = 6[0m
+  ↳ app/views/mypage/show.html.erb:11
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `users` INNER JOIN `relationships` ON `users`.`id` = `relationships`.`user_id` WHERE `relationships`.`follow_id` = 6[0m
+  ↳ app/views/mypage/show.html.erb:12
+  [1m[36mHangOut Load (0.8ms)[0m  [1m[34mSELECT `hang_outs`.* FROM `hang_outs` WHERE `hang_outs`.`user_id` = 6[0m
+  ↳ app/views/mypage/show.html.erb:29
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`user_id` = 6[0m
+  ↳ app/views/mypage/show.html.erb:55
+  Rendered mypage/show.html.erb within layouts/application (Duration: 33.2ms | Allocations: 4595)
+Completed 200 OK in 101ms (Views: 88.4ms | ActiveRecord: 5.0ms | Allocations: 10869)
+
+
+Started GET "/questions/new" for 192.168.48.1 at 2020-08-14 13:11:11 +0000
+Cannot render console from 192.168.48.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by QuestionsController#new as HTML
+  Rendering questions/new.html.erb within layouts/application
+  Rendered questions/_form.html.erb (Duration: 3.4ms | Allocations: 1818)
+  Rendered questions/new.html.erb within layouts/application (Duration: 5.2ms | Allocations: 1880)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/views/layouts/application.html.erb:14
+Completed 200 OK in 65ms (Views: 62.3ms | ActiveRecord: 0.7ms | Allocations: 8499)
+
+
+Started GET "/questions/new" for 192.168.48.1 at 2020-08-14 13:12:58 +0000
+Cannot render console from 192.168.48.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by QuestionsController#new as HTML
+  Rendering questions/new.html.erb within layouts/application
+  Rendered questions/_form.html.erb (Duration: 3.0ms | Allocations: 1810)
+  Rendered questions/new.html.erb within layouts/application (Duration: 4.8ms | Allocations: 1872)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/views/layouts/application.html.erb:14
+Completed 200 OK in 67ms (Views: 65.2ms | ActiveRecord: 0.5ms | Allocations: 8568)
+
+
+Started GET "/users/edit" for 192.168.48.1 at 2020-08-14 13:13:41 +0000
+Cannot render console from 192.168.48.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Users::RegistrationsController#edit as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 15)
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 4.7ms | Allocations: 834)
+Completed 200 OK in 70ms (Views: 60.1ms | ActiveRecord: 1.5ms | Allocations: 8106)
+
+
+Started GET "/user/6" for 192.168.48.1 at 2020-08-14 13:13:45 +0000
+Cannot render console from 192.168.48.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by MypageController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  ↳ app/controllers/mypage_controller.rb:15:in `set_user'
+  Rendering mypage/show.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/views/mypage/show.html.erb:2
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM `users` INNER JOIN `relationships` ON `users`.`id` = `relationships`.`follow_id` WHERE `relationships`.`user_id` = 6[0m
+  ↳ app/views/mypage/show.html.erb:11
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `users` INNER JOIN `relationships` ON `users`.`id` = `relationships`.`user_id` WHERE `relationships`.`follow_id` = 6[0m
+  ↳ app/views/mypage/show.html.erb:12
+  [1m[36mHangOut Load (0.8ms)[0m  [1m[34mSELECT `hang_outs`.* FROM `hang_outs` WHERE `hang_outs`.`user_id` = 6[0m
+  ↳ app/views/mypage/show.html.erb:29
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`user_id` = 6[0m
+  ↳ app/views/mypage/show.html.erb:55
+  Rendered mypage/show.html.erb within layouts/application (Duration: 21.4ms | Allocations: 4580)
+Completed 200 OK in 59ms (Views: 49.0ms | ActiveRecord: 5.1ms | Allocations: 10845)
+
+
+Started GET "/questions/3/json" for 192.168.48.3 at 2020-08-14 13:15:37 +0000
+Cannot render console from 192.168.48.3! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by QuestionsController#get_json as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mQuestion Load (1.0ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` WHERE `questions`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/questions_controller.rb:16:in `get_json'
+Completed 200 OK in 8ms (Views: 1.1ms | ActiveRecord: 1.0ms | Allocations: 851)
+
+
+Started GET "/hang_outs/10/json" for 192.168.48.3 at 2020-08-14 13:15:51 +0000
+Cannot render console from 192.168.48.3! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HangOutsController#get_json as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mHangOut Load (1.8ms)[0m  [1m[34mSELECT `hang_outs`.* FROM `hang_outs` WHERE `hang_outs`.`id` = 10 LIMIT 1[0m
+  ↳ app/controllers/hang_outs_controller.rb:16:in `get_json'
+Completed 200 OK in 24ms (Views: 1.6ms | ActiveRecord: 5.7ms | Allocations: 6096)
+
+
+Started GET "/hang_outs" for 192.168.48.1 at 2020-08-14 13:18:14 +0000
+Cannot render console from 192.168.48.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HangOutsController#index as HTML
+  Rendering hang_outs/index.html.erb within layouts/application
+  [1m[36mHangOut Load (0.7ms)[0m  [1m[34mSELECT `hang_outs`.* FROM `hang_outs` ORDER BY `hang_outs`.`created_at` DESC LIMIT 10 OFFSET 0[0m
+  ↳ app/views/hang_outs/index.html.erb:20
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 15[0m
+  ↳ app/views/hang_outs/_table.html.erb:30
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/views/hang_outs/_table.html.erb:32
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  ↳ app/views/hang_outs/_table.html.erb:32
+  [1m[36mHangOut Update (1.1ms)[0m  [1m[33mUPDATE `hang_outs` SET `hang_outs`.`label` = 1, `hang_outs`.`updated_at` = '2020-08-14 13:18:15.006894' WHERE `hang_outs`.`id` = 15[0m
+  ↳ app/views/hang_outs/_table.html.erb:32
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/views/hang_outs/_table.html.erb:32
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 15[0m
+  ↳ app/views/hang_outs/_table.html.erb:49
+  [1m[35m (6.9ms)[0m  [1m[34mSELECT COUNT(*) FROM `comments` WHERE `comments`.`hang_out_id` = 15[0m
+  ↳ app/views/hang_outs/_table.html.erb:51
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/views/hang_outs/_table.html.erb:52
+  [1m[36mLike Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 6 AND `likes`.`hang_out_id` = 15 LIMIT 1[0m
+  ↳ app/models/user.rb:32:in `already_liked?'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 14[0m
+  ↳ app/views/hang_outs/_table.html.erb:30
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/views/hang_outs/_table.html.erb:32
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 5 LIMIT 1[0m
+  ↳ app/views/hang_outs/_table.html.erb:32
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/views/hang_outs/_table.html.erb:32
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 14[0m
+  ↳ app/views/hang_outs/_table.html.erb:49
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `comments` WHERE `comments`.`hang_out_id` = 14[0m
+  ↳ app/views/hang_outs/_table.html.erb:51
+  [1m[36mLike Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 6 AND `likes`.`hang_out_id` = 14 LIMIT 1[0m
+  ↳ app/models/user.rb:32:in `already_liked?'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 13[0m
+  ↳ app/views/hang_outs/_table.html.erb:30
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/views/hang_outs/_table.html.erb:32
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/views/hang_outs/_table.html.erb:32
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/views/hang_outs/_table.html.erb:32
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 13[0m
+  ↳ app/views/hang_outs/_table.html.erb:49
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `comments` WHERE `comments`.`hang_out_id` = 13[0m
+  ↳ app/views/hang_outs/_table.html.erb:51
+  [1m[36mLike Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 6 AND `likes`.`hang_out_id` = 13 LIMIT 1[0m
+  ↳ app/models/user.rb:32:in `already_liked?'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 12[0m
+  ↳ app/views/hang_outs/_table.html.erb:30
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/views/hang_outs/_table.html.erb:32
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/views/hang_outs/_table.html.erb:32
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/views/hang_outs/_table.html.erb:32
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 12[0m
+  ↳ app/views/hang_outs/_table.html.erb:49
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `comments` WHERE `comments`.`hang_out_id` = 12[0m
+  ↳ app/views/hang_outs/_table.html.erb:51
+  [1m[36mLike Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 6 AND `likes`.`hang_out_id` = 12 LIMIT 1[0m
+  ↳ app/models/user.rb:32:in `already_liked?'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 11[0m
+  ↳ app/views/hang_outs/_table.html.erb:30
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 11[0m
+  ↳ app/views/hang_outs/_table.html.erb:33
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/hang_outs/_table.html.erb:35
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 11[0m
+  ↳ app/views/hang_outs/_table.html.erb:49
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `comments` WHERE `comments`.`hang_out_id` = 11[0m
+  ↳ app/views/hang_outs/_table.html.erb:51
+  [1m[36mLike Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 6 AND `likes`.`hang_out_id` = 11 LIMIT 1[0m
+  ↳ app/models/user.rb:32:in `already_liked?'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/hang_outs/_table.html.erb:29
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 10[0m
+  ↳ app/views/hang_outs/_table.html.erb:49
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `comments` WHERE `comments`.`hang_out_id` = 10[0m
+  ↳ app/views/hang_outs/_table.html.erb:51
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/hang_outs/_table.html.erb:29
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 9[0m
+  ↳ app/views/hang_outs/_table.html.erb:49
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `comments` WHERE `comments`.`hang_out_id` = 9[0m
+  ↳ app/views/hang_outs/_table.html.erb:51
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/views/hang_outs/_table.html.erb:29
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+  ↳ app/views/hang_outs/_table.html.erb:29
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/views/hang_outs/_table.html.erb:29
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 8[0m
+  ↳ app/views/hang_outs/_table.html.erb:49
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `comments` WHERE `comments`.`hang_out_id` = 8[0m
+  ↳ app/views/hang_outs/_table.html.erb:51
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/hang_outs/_table.html.erb:29
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 7[0m
+  ↳ app/views/hang_outs/_table.html.erb:49
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `comments` WHERE `comments`.`hang_out_id` = 7[0m
+  ↳ app/views/hang_outs/_table.html.erb:51
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/views/hang_outs/_table.html.erb:29
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/views/hang_outs/_table.html.erb:29
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/views/hang_outs/_table.html.erb:29
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 6[0m
+  ↳ app/views/hang_outs/_table.html.erb:49
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `comments` WHERE `comments`.`hang_out_id` = 6[0m
+  ↳ app/views/hang_outs/_table.html.erb:51
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `hang_outs`[0m
+  ↳ app/views/hang_outs/_table.html.erb:79
+  Rendered hang_outs/_table.html.erb (Duration: 336.0ms | Allocations: 63189)
+  [1m[36mHangOut Load (0.6ms)[0m  [1m[34mSELECT `hang_outs`.* FROM `hang_outs` ORDER BY `hang_outs`.`created_at` DESC LIMIT 10 OFFSET 0[0m
+  ↳ app/views/hang_outs/index.html.erb:27
+  [1m[36mHangOut Load (0.8ms)[0m  [1m[34mSELECT `hang_outs`.* FROM `hang_outs` WHERE `hang_outs`.`label` = 0 ORDER BY `hang_outs`.`created_at` DESC[0m
+  ↳ app/views/hang_outs/_table.html.erb:17
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 11[0m
+  ↳ app/views/hang_outs/_table.html.erb:30
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 11[0m
+  ↳ app/views/hang_outs/_table.html.erb:33
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/hang_outs/_table.html.erb:35
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 11[0m
+  ↳ app/views/hang_outs/_table.html.erb:49
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `comments` WHERE `comments`.`hang_out_id` = 11[0m
+  ↳ app/views/hang_outs/_table.html.erb:51
+  [1m[36mCACHE Like Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 6 AND `likes`.`hang_out_id` = 11 LIMIT 1[0m
+  ↳ app/models/user.rb:32:in `already_liked?'
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `hang_outs`[0m
+  ↳ app/views/hang_outs/_table.html.erb:79
+  Rendered hang_outs/_table.html.erb (Duration: 28.3ms | Allocations: 7535)
+  [1m[36mCACHE HangOut Load (0.0ms)[0m  [1m[34mSELECT `hang_outs`.* FROM `hang_outs` ORDER BY `hang_outs`.`created_at` DESC LIMIT 10 OFFSET 0[0m
+  ↳ app/views/hang_outs/index.html.erb:34
+  [1m[36mHangOut Load (0.6ms)[0m  [1m[34mSELECT `hang_outs`.* FROM `hang_outs` WHERE `hang_outs`.`label` = 1 ORDER BY `hang_outs`.`created_at` DESC[0m
+  ↳ app/views/hang_outs/_table.html.erb:17
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 15[0m
+  ↳ app/views/hang_outs/_table.html.erb:30
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/hang_outs/_table.html.erb:32
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 15[0m
+  ↳ app/views/hang_outs/_table.html.erb:49
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `comments` WHERE `comments`.`hang_out_id` = 15[0m
+  ↳ app/views/hang_outs/_table.html.erb:51
+  [1m[36mCACHE Like Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 6 AND `likes`.`hang_out_id` = 15 LIMIT 1[0m
+  ↳ app/models/user.rb:32:in `already_liked?'
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 14[0m
+  ↳ app/views/hang_outs/_table.html.erb:30
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 5 LIMIT 1[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/hang_outs/_table.html.erb:32
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 14[0m
+  ↳ app/views/hang_outs/_table.html.erb:49
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `comments` WHERE `comments`.`hang_out_id` = 14[0m
+  ↳ app/views/hang_outs/_table.html.erb:51
+  [1m[36mCACHE Like Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 6 AND `likes`.`hang_out_id` = 14 LIMIT 1[0m
+  ↳ app/models/user.rb:32:in `already_liked?'
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 13[0m
+  ↳ app/views/hang_outs/_table.html.erb:30
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/hang_outs/_table.html.erb:32
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 13[0m
+  ↳ app/views/hang_outs/_table.html.erb:49
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `comments` WHERE `comments`.`hang_out_id` = 13[0m
+  ↳ app/views/hang_outs/_table.html.erb:51
+  [1m[36mCACHE Like Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 6 AND `likes`.`hang_out_id` = 13 LIMIT 1[0m
+  ↳ app/models/user.rb:32:in `already_liked?'
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 12[0m
+  ↳ app/views/hang_outs/_table.html.erb:30
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/hang_outs/_table.html.erb:32
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 12[0m
+  ↳ app/views/hang_outs/_table.html.erb:49
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `comments` WHERE `comments`.`hang_out_id` = 12[0m
+  ↳ app/views/hang_outs/_table.html.erb:51
+  [1m[36mCACHE Like Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 6 AND `likes`.`hang_out_id` = 12 LIMIT 1[0m
+  ↳ app/models/user.rb:32:in `already_liked?'
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `hang_outs`[0m
+  ↳ app/views/hang_outs/_table.html.erb:79
+  Rendered hang_outs/_table.html.erb (Duration: 74.4ms | Allocations: 19607)
+  [1m[36mCACHE HangOut Load (0.0ms)[0m  [1m[34mSELECT `hang_outs`.* FROM `hang_outs` ORDER BY `hang_outs`.`created_at` DESC LIMIT 10 OFFSET 0[0m
+  ↳ app/views/hang_outs/index.html.erb:41
+  [1m[36mHangOut Load (0.7ms)[0m  [1m[34mSELECT `hang_outs`.* FROM `hang_outs` WHERE `hang_outs`.`label` = 2 ORDER BY `hang_outs`.`created_at` DESC[0m
+  ↳ app/views/hang_outs/_table.html.erb:17
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/hang_outs/_table.html.erb:29
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 10[0m
+  ↳ app/views/hang_outs/_table.html.erb:49
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `comments` WHERE `comments`.`hang_out_id` = 10[0m
+  ↳ app/views/hang_outs/_table.html.erb:51
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/hang_outs/_table.html.erb:29
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 9[0m
+  ↳ app/views/hang_outs/_table.html.erb:49
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `comments` WHERE `comments`.`hang_out_id` = 9[0m
+  ↳ app/views/hang_outs/_table.html.erb:51
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/hang_outs/_table.html.erb:29
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 8[0m
+  ↳ app/views/hang_outs/_table.html.erb:49
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `comments` WHERE `comments`.`hang_out_id` = 8[0m
+  ↳ app/views/hang_outs/_table.html.erb:51
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/hang_outs/_table.html.erb:29
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 7[0m
+  ↳ app/views/hang_outs/_table.html.erb:49
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `comments` WHERE `comments`.`hang_out_id` = 7[0m
+  ↳ app/views/hang_outs/_table.html.erb:51
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/hang_outs/_table.html.erb:29
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 6[0m
+  ↳ app/views/hang_outs/_table.html.erb:49
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `comments` WHERE `comments`.`hang_out_id` = 6[0m
+  ↳ app/views/hang_outs/_table.html.erb:51
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/hang_outs/_table.html.erb:29
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 5[0m
+  ↳ app/views/hang_outs/_table.html.erb:49
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `comments` WHERE `comments`.`hang_out_id` = 5[0m
+  ↳ app/views/hang_outs/_table.html.erb:51
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/hang_outs/_table.html.erb:29
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 4[0m
+  ↳ app/views/hang_outs/_table.html.erb:49
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `comments` WHERE `comments`.`hang_out_id` = 4[0m
+  ↳ app/views/hang_outs/_table.html.erb:51
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/hang_outs/_table.html.erb:29
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 3[0m
+  ↳ app/views/hang_outs/_table.html.erb:49
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `comments` WHERE `comments`.`hang_out_id` = 3[0m
+  ↳ app/views/hang_outs/_table.html.erb:51
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/hang_outs/_table.html.erb:29
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 2[0m
+  ↳ app/views/hang_outs/_table.html.erb:49
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `comments` WHERE `comments`.`hang_out_id` = 2[0m
+  ↳ app/views/hang_outs/_table.html.erb:51
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/hang_outs/_table.html.erb:29
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`hang_out_id` = 1[0m
+  ↳ app/views/hang_outs/_table.html.erb:49
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `comments` WHERE `comments`.`hang_out_id` = 1[0m
+  ↳ app/views/hang_outs/_table.html.erb:51
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `hang_outs`[0m
+  ↳ app/views/hang_outs/_table.html.erb:79
+  Rendered hang_outs/_table.html.erb (Duration: 103.8ms | Allocations: 32306)
+  Rendered hang_outs/index.html.erb within layouts/application (Duration: 579.8ms | Allocations: 126131)
+Completed 200 OK in 644ms (Views: 579.4ms | ActiveRecord: 52.5ms | Allocations: 133100)
+
+
+Started GET "/hang_outs/10" for 192.168.48.1 at 2020-08-14 13:18:17 +0000
+Cannot render console from 192.168.48.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HangOutsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mHangOut Load (0.7ms)[0m  [1m[34mSELECT `hang_outs`.* FROM `hang_outs` WHERE `hang_outs`.`id` = 10 LIMIT 1[0m
+  ↳ app/controllers/hang_outs_controller.rb:106:in `set_hang_out'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/controllers/hang_outs_controller.rb:28:in `show'
+Started GET "/hang_outs/10/json" for 192.168.48.3 at 2020-08-14 13:18:18 +0000
+Cannot render console from 192.168.48.3! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+Processing by HangOutsController#get_json as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mHangOut Load (0.8ms)[0m  [1m[34mSELECT `hang_outs`.* FROM `hang_outs` WHERE `hang_outs`.`id` = 10 LIMIT 1[0m
+  ↳ app/controllers/hang_outs_controller.rb:16:in `get_json'
+Completed 200 OK in 5ms (Views: 0.5ms | ActiveRecord: 0.8ms | Allocations: 935)
+
+
+  Rendering hang_outs/show.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/views/hang_outs/show.html.erb:6
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`hang_out_id` = 10[0m
+  ↳ app/views/hang_outs/show.html.erb:26
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT `comments`.* FROM `comments` WHERE `comments`.`hang_out_id` = 10[0m
+  ↳ app/views/hang_outs/show.html.erb:47
+  Rendered hang_outs/show.html.erb within layouts/application (Duration: 31.5ms | Allocations: 5013)
+Completed 200 OK in 141ms (Views: 66.0ms | ActiveRecord: 9.6ms | Allocations: 22615)
+
+
+Started GET "/" for 192.168.48.1 at 2020-08-14 21:23:29 +0000
+Cannot render console from 192.168.48.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+Mysql2::Error::ConnectionError (Can't connect to MySQL server on 'db' (115)):
+  
+mysql2 (0.5.3) lib/mysql2/client.rb:90:in `connect'
+mysql2 (0.5.3) lib/mysql2/client.rb:90:in `initialize'
+activerecord (6.0.3.2) lib/active_record/connection_adapters/mysql2_adapter.rb:24:in `new'
+activerecord (6.0.3.2) lib/active_record/connection_adapters/mysql2_adapter.rb:24:in `mysql2_connection'
+activerecord (6.0.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:887:in `new_connection'
+activerecord (6.0.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:931:in `checkout_new_connection'
+activerecord (6.0.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:910:in `try_to_checkout_new_connection'
+activerecord (6.0.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:871:in `acquire_connection'
+activerecord (6.0.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:593:in `checkout'
+activerecord (6.0.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:437:in `connection'
+activerecord (6.0.3.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:1119:in `retrieve_connection'
+activerecord (6.0.3.2) lib/active_record/connection_handling.rb:221:in `retrieve_connection'
+activerecord (6.0.3.2) lib/active_record/connection_handling.rb:189:in `connection'
+activerecord (6.0.3.2) lib/active_record/migration.rb:562:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:19:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/" for 192.168.48.1 at 2020-08-14 21:24:16 +0000
+Cannot render console from 192.168.48.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (2.9ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (26.0ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by WelcomeController#welcome as HTML
+  Rendering welcome/welcome.html.erb within layouts/application
+DEPRECATION WARNING: autoprefixer-rails was deprected. Migration guide:
+https://github.com/ai/autoprefixer-rails/wiki/Deprecated (called from run at /usr/local/bundle/gems/autoprefixer-rails-9.8.6.1/lib/autoprefixer-rails/sprockets.rb:22)
+DEPRECATION WARNING: autoprefixer-rails was deprected. Migration guide:
+https://github.com/ai/autoprefixer-rails/wiki/Deprecated (called from run at /usr/local/bundle/gems/autoprefixer-rails-9.8.6.1/lib/autoprefixer-rails/sprockets.rb:22)
+DEPRECATION WARNING: autoprefixer-rails was deprected. Migration guide:
+https://github.com/ai/autoprefixer-rails/wiki/Deprecated (called from run at /usr/local/bundle/gems/autoprefixer-rails-9.8.6.1/lib/autoprefixer-rails/sprockets.rb:22)
+  Rendered welcome/welcome.html.erb within layouts/application (Duration: 9685.9ms | Allocations: 63704)
+  [1m[36mUser Load (11.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 6 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/views/layouts/application.html.erb:14
+Completed 200 OK in 10254ms (Views: 10195.4ms | ActiveRecord: 19.7ms | Allocations: 110879)
+
+
+Started GET "/login" for 192.168.48.1 at 2020-08-14 21:24:34 +0000
+Cannot render console from 192.168.48.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 89.6ms | Allocations: 3877)
+Completed 200 OK in 174ms (Views: 157.3ms | ActiveRecord: 0.0ms | Allocations: 17880)
+
+
+Started POST "/users/sign_in" for 192.168.48.1 at 2020-08-14 21:25:00 +0000
+Cannot render console from 192.168.48.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"/1w+BQ4nhs79SIPFZhCSCFTLwx6rTKrLL1sxpn0z7AehNwNvTgNhngvkR5wDaPbN/TXpL9dfiO91agDIF3+LIA==", "user"=>{"email"=>"admin@hangout.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"ログイン"}
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'admin@hangout.com' ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://localhost:3000/user/1
+Completed 302 Found in 438ms (ActiveRecord: 2.6ms | Allocations: 5532)
+
+
+Started GET "/user/1" for 192.168.48.1 at 2020-08-14 21:25:01 +0000
+Cannot render console from 192.168.48.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by MypageController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/mypage_controller.rb:15:in `set_user'
+  Rendering mypage/show.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/views/mypage/show.html.erb:2
+  [1m[35m (7.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `users` INNER JOIN `relationships` ON `users`.`id` = `relationships`.`follow_id` WHERE `relationships`.`user_id` = 1[0m
+  ↳ app/views/mypage/show.html.erb:11
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT COUNT(*) FROM `users` INNER JOIN `relationships` ON `users`.`id` = `relationships`.`user_id` WHERE `relationships`.`follow_id` = 1[0m
+  ↳ app/views/mypage/show.html.erb:12
+  [1m[36mHangOut Load (6.4ms)[0m  [1m[34mSELECT `hang_outs`.* FROM `hang_outs` WHERE `hang_outs`.`user_id` = 1[0m
+  ↳ app/views/mypage/show.html.erb:29
+  [1m[36mLike Load (5.6ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`user_id` = 1[0m
+  ↳ app/views/mypage/show.html.erb:55
+  Rendered mypage/show.html.erb within layouts/application (Duration: 128.0ms | Allocations: 14907)
+Completed 200 OK in 195ms (Views: 151.4ms | ActiveRecord: 28.7ms | Allocations: 22277)
+
+
+Started GET "/hang_outs/10/json" for 192.168.48.3 at 2020-08-14 21:25:17 +0000
+Cannot render console from 192.168.48.3! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by HangOutsController#get_json as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mHangOut Load (1.5ms)[0m  [1m[34mSELECT `hang_outs`.* FROM `hang_outs` WHERE `hang_outs`.`id` = 10 LIMIT 1[0m
+  ↳ app/controllers/hang_outs_controller.rb:16:in `get_json'
+Completed 404 Not Found in 8ms (ActiveRecord: 3.1ms | Allocations: 1299)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find HangOut with 'id'=10):
+  
+app/controllers/hang_outs_controller.rb:16:in `get_json'
+Started GET "/questions/3/json" for 192.168.48.3 at 2020-08-14 21:25:22 +0000
+Cannot render console from 192.168.48.3! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by QuestionsController#get_json as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mQuestion Load (7.1ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` WHERE `questions`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/questions_controller.rb:16:in `get_json'
+Completed 404 Not Found in 24ms (ActiveRecord: 10.3ms | Allocations: 1879)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Question with 'id'=3):
+  
+app/controllers/questions_controller.rb:16:in `get_json'
+Started GET "/questions/1/json" for 192.168.48.3 at 2020-08-14 21:25:29 +0000
+Cannot render console from 192.168.48.3! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by QuestionsController#get_json as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.7ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` WHERE `questions`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/questions_controller.rb:16:in `get_json'
+  [1m[36mUserDetail Load (7.2ms)[0m  [1m[34mSELECT `user_details`.* FROM `user_details` WHERE `user_details`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/questions_controller.rb:17:in `get_json'
+Completed 200 OK in 53ms (Views: 1.0ms | ActiveRecord: 12.3ms | Allocations: 12135)
+
+

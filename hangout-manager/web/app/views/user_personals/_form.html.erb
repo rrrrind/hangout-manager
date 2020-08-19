@@ -1,0 +1,63 @@
+<%= form_with(model: user_personal, local: true) do |form| %>
+  <% if user_personal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user_personal.errors.count, "error") %> prohibited this user_personal from being saved:</h2>
+
+      <ul>
+        <% user_personal.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <h4><%= form.label :p_one, "通常自分から話を始めることはない" %></h4>
+    <br>
+    <h5><%= form.radio_button :p_one, 1 %> &nbsp; 1：全く当てはまらない</h5><br>
+    <h5><%= form.radio_button :p_one, 2 %> &nbsp; 2：当てはまらない</h5><br>
+    <h5><%= form.radio_button :p_one, 3 %> &nbsp; 3：あまり当てはまらない</h5><br>
+    <h5><%= form.radio_button :p_one, 4 %> &nbsp; 4：少し当てはまる</h5><br>
+    <h5><%= form.radio_button :p_one, 5 %> &nbsp; 5：当てはまる</h5><br>
+    <h5><%= form.radio_button :p_one, 6 %> &nbsp; 6：とても当てはまる</h5><br>
+  </div>
+  <hr>
+  <div class="field">
+    <h4><%= form.label :p_two, "どちらかというと控えめで静かな性格である" %></h4>
+    <br>
+    <h5><%= form.radio_button :p_two, 1 %> &nbsp; 1：全く当てはまらない</h5><br>
+    <h5><%= form.radio_button :p_two, 2 %> &nbsp; 2：当てはまらない</h5><br>
+    <h5><%= form.radio_button :p_two, 3 %> &nbsp; 3：あまり当てはまらない</h5><br>
+    <h5><%= form.radio_button :p_two, 4 %> &nbsp; 4：少し当てはまる</h5><br>
+    <h5><%= form.radio_button :p_two, 5 %> &nbsp; 5：当てはまる</h5><br>
+    <h5><%= form.radio_button :p_two, 6 %> &nbsp; 6：とても当てはまる</h5><br>
+  </div>
+  <hr>
+  <div class="field">
+    <h4><%= form.label :p_three, "深く考えるより，すぐに行動したい" %></h4>
+    <br>
+    <h5><%= form.radio_button :p_three, 1 %> &nbsp; 1：全く当てはまらない</h5><br>
+    <h5><%= form.radio_button :p_three, 2 %> &nbsp; 2：当てはまらない</h5><br>
+    <h5><%= form.radio_button :p_three, 3 %> &nbsp; 3：あまり当てはまらない</h5><br>
+    <h5><%= form.radio_button :p_three, 4 %> &nbsp; 4：少し当てはまる</h5><br>
+    <h5><%= form.radio_button :p_three, 5 %> &nbsp; 5：当てはまる</h5><br>
+    <h5><%= form.radio_button :p_three, 6 %> &nbsp; 6：とても当てはまる</h5><br>
+  </div>
+  <hr>
+  <div class="field">
+    <h4><%= form.label :p_four, "どちらかというと開放的で陽気なタイプだと思う" %></h4>
+    <br>
+    <h5><%= form.radio_button :p_four, 1 %> &nbsp; 1：全く当てはまらない</h5><br>
+    <h5><%= form.radio_button :p_four, 2 %> &nbsp; 2：当てはまらない</h5><br>
+    <h5><%= form.radio_button :p_four, 3 %> &nbsp; 3：あまり当てはまらない</h5><br>
+    <h5><%= form.radio_button :p_four, 4 %> &nbsp; 4：少し当てはまる</h5><br>
+    <h5><%= form.radio_button :p_four, 5 %> &nbsp; 5：当てはまる</h5><br>
+    <h5><%= form.radio_button :p_four, 6 %> &nbsp; 6：とても当てはまる</h5><br>
+  </div>
+  <br>
+  <div class="actions">
+    <%= form.submit "登録", { class: 'btn btn-primary w-25' }%>
+  </div>
+<% end %>
+<%= link_to "戻る", :back, { class: 'btn btn-primary w-25' }  %>
+  </div>
